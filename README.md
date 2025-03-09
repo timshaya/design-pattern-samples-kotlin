@@ -1,3 +1,5 @@
+This is a Maven project written in Kotlin. 
+
 Run the unit tests to execute the code. For example, 
 
 ```kotlin
