@@ -1,8 +1,5 @@
 package creational.factory
 
-import com.timshaya.creational.factory.ColonialFleet
-import com.timshaya.creational.factory.CylonFleet
-import com.timshaya.creational.factory.StarFighterFactory
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull

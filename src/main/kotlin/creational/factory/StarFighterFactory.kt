@@ -1,4 +1,4 @@
-package com.timshaya.creational.factory
+package creational.factory
 
 interface Fleet
 data class ColonialFleet(var name: String? = "Colonial Fleet"): Fleet

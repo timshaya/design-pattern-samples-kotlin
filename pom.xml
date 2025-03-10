@@ -6,12 +6,12 @@
 
     <groupId>com.timshaya</groupId>
     <artifactId>design-pattern-samples-kotlin</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
-        <kotlin.version>2.1.10</kotlin.version>
+        <kotlin.version>2.1.10</kotlin.version><!-- 1.9.22 -->
         <kotlin.compiler.jvmTarget>17</kotlin.compiler.jvmTarget>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -21,12 +21,12 @@
         <kotlin.test.junit5.version>2.1.10</kotlin.test.junit5.version>
         <junit.jupiter.version>5.10.0</junit.jupiter.version>
         <kotlin.stdlib.version>2.1.10</kotlin.stdlib.version>
+        <mockk.version>1.13.5</mockk.version>
     </properties>
-
     <repositories>
         <repository>
-            <id>mavenCentral</id>
-            <url>https://repo1.maven.org/maven2/</url>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
         </repository>
     </repositories>
 
@@ -80,7 +80,21 @@
         </plugins>
     </build>
 
+
+
     <dependencies>
+        <dependency>
+            <groupId>io.mockk</groupId>
+            <artifactId>mockk</artifactId>
+            <version>${mockk.version}</version> <!-- Use the latest version -->
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.mockk</groupId>
+            <artifactId>mockk-jvm</artifactId> <!-- Critical fix -->
+            <version>${mockk.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-test-junit5</artifactId>
