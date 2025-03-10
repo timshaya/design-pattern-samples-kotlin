@@ -31,17 +31,3 @@ class Viper(private var weaponStrategy: WeaponSystem) {
         println("Tactical computer: Weapon system reconfigured")
     }
 }
-
-
-//// Usage
-//fun main() {
-//    val viper = Viper(SemiAutomaticFire())
-//
-//    viper.attack("Cylon Raider")  // Firing 3-round burst from KEW cannons at Cylon Raider
-//
-//    viper.changeWeaponType(MissileFire())
-//    viper.attack("Basestar weak point")  // Launching Viper Mark VII missile salvo at Basestar weak point
-//
-//    viper.changeWeaponType(FullyAutomaticFire())
-//    viper.attack("Nuclear warhead barrage")  // Sustained barrage from rotating autocannons at Nuclear warhead barrage fired by Cylon Basestar
-//}
