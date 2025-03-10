@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
+import kotlin.test.assertFailsWith
+import behavioral.strategy.*
 
 class ViperTest {
 
@@ -40,20 +42,37 @@ class ViperTest {
  }
 
  @Test
- fun `changing Viper weapon to MissileFire should update strategy`() {
-  // Arrange
-  val missileWeapon =  MissileFire()
+ fun `attack propagates WeaponSystem exceptions`() {
+  val mockWeapon = mockk<WeaponSystem>()
+  val viper = Viper(mockWeapon)
+  val expectedException = RuntimeException("Weapon malfunction")
 
-  // Act
-  viper.changeWeaponType(missileWeapon)
-  viper.attack("Basestar bridge")
+  every { mockWeapon.fire(any()) } throws expectedException
 
+  val exception = assertFailsWith<RuntimeException> {
+   viper.attack("Cylon Basestar")
+  }
 
-  // TODO: Assert another way - missileWeapon is not a Mockk here, so can't call verify {} on it in this case:...
-  //verify { missileWeapon.fire("Basestar bridge") }
-  //confirmVerified(missileWeapon)
-
+  assertEquals("Weapon malfunction", exception.message)
+  verify(exactly = 1) { mockWeapon.fire("Cylon Basestar") }
  }
+
+
+
+// @Test
+// fun `changing Viper weapon to MissileFire should update strategy`() {
+//  // Arrange
+//  val missileWeapon =  MissileFire()
+//
+//  // Act
+//  viper.changeWeaponType(missileWeapon)
+//  viper.attack("Basestar bridge")
+//
+//
+//  // TODO: Assert another way - missileWeapon is not a Mockk here, so can't call verify {} on it in this case:...
+//  verify { missileWeapon.fire("Basestar bridge") }
+//  //confirmVerified(missileWeapon)
+// }
 
  @ParameterizedTest
  @MethodSource("weaponProvider")
