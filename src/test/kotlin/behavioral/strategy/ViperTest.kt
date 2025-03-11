@@ -57,22 +57,20 @@ class ViperTest {
   verify(exactly = 1) { mockWeapon.fire("Cylon Basestar") }
  }
 
+ @Test
+ fun `attack uses newly configured MissileFire weapon`() {
+  // Arrange
+  val viper = Viper(SemiAutomaticFire()) // Initial weapon
+  val missileWeapon = spyk(MissileFire()) // Spy on concrete strategy
 
+  // Act
+  viper.changeWeaponType(missileWeapon)
+  viper.attack("Basestar bridge")
 
-// @Test
-// fun `changing Viper weapon to MissileFire should update strategy`() {
-//  // Arrange
-//  val missileWeapon =  MissileFire()
-//
-//  // Act
-//  viper.changeWeaponType(missileWeapon)
-//  viper.attack("Basestar bridge")
-//
-//
-//  // TODO: Assert another way - missileWeapon is not a Mockk here, so can't call verify {} on it in this case:...
-//  verify { missileWeapon.fire("Basestar bridge") }
-//  //confirmVerified(missileWeapon)
-// }
+  // Assert
+  verify { missileWeapon.fire("Basestar bridge") }
+  confirmVerified(missileWeapon) // Verify no extra interactions
+ }
 
  @ParameterizedTest
  @MethodSource("weaponProvider")
