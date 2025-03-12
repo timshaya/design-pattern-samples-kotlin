@@ -43,16 +43,19 @@ class ViperTest {
 
  @Test
  fun `attack propagates WeaponSystem exceptions`() {
+  //Arrange
   val mockWeapon = mockk<WeaponSystem>()
   val viper = Viper(mockWeapon)
   val expectedException = RuntimeException("Weapon malfunction")
 
   every { mockWeapon.fire(any()) } throws expectedException
 
+  //Act
   val exception = assertFailsWith<RuntimeException> {
    viper.attack("Cylon Basestar")
   }
 
+  // Assert
   assertEquals("Weapon malfunction", exception.message)
   verify(exactly = 1) { mockWeapon.fire("Cylon Basestar") }
  }
