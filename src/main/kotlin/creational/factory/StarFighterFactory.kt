@@ -5,7 +5,7 @@ data class CylonFleet(var name: String? = "Caprica BaseStars"): Fleet
 
 class StarFighter(modelName: String) { var shipModelName = modelName }
 
-public object StarFighterFactory {
+object StarFighterFactory {
     fun createStarFighter(fleet: Fleet?): StarFighter? {
         try {
             when (fleet) {
