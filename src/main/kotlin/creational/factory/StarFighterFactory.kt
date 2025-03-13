@@ -1,6 +1,5 @@
 package creational.factory
 
-interface Fleet
 data class ColonialFleet(var name: String? = "Colonial Fleet"): Fleet
 data class CylonFleet(var name: String? = "Caprica BaseStars"): Fleet
 

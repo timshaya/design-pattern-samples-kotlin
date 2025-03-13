@@ -1,8 +1,5 @@
 package behavioral.strategy
 
-// Strategy Interface
-interface WeaponSystem { fun fire(target: String?) }
-
 // Concrete Strategies
 class SemiAutomaticFire : WeaponSystem {
     override fun fire(target: String?) {
