@@ -13,7 +13,7 @@ class ViperDecoratorTest {
  }
 
  @Test
- fun `use MissileSystemDecorator to create Viper with missles`() {
+ fun `use MissileSystemDecorator to create Viper with missiles`() {
   val viper: Viper = MissileSystemDecorator(MarkIIViper())
   assertEquals("Mark II Viper starfighter with Typhoon Missile System", viper.getDescription())
   assertEquals(75, viper.attack())
