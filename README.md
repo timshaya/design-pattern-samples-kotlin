@@ -1,8 +1,6 @@
 This is a Maven project written in Kotlin. 
 
-Run the unit tests to execute the code. For example, 
-
-see the relevant /test files for the Decorator pattern
+Run the unit tests to execute the code. For example, see the relevant /test files for the Decorator pattern
 ```kotlin
  @Test
  fun `use multiple Decorators to make a Viper with full combat package`() {
